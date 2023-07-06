@@ -50,11 +50,34 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
-    
+
     def btn_informar_on_click(self):
-        pass
+        destino = self.combobox_destino.get()
+        estacion = self.combobox_estaciones.get()
+        estadia = 15000
+        # INVIERNO:
+        if estacion in ["Invierno"] and destino in ["Bariloche"]:
+            alert("Ejercicio N°9",f"El precio final es: {estadia + (estadia*20/100)}")
+        elif estacion in ["Invierno"] and destino in ["Cataratas","Cordoba"]:
+            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia - (estadia*10/100)}")
+        elif estacion in ["Invierno"] and destino in ["Mar del plata"]:
+            alert("Ejercicio N°9",f"El precio final por estadia es: {estadia - (estadia*20/100)}")
             
-    
+        #VERANO:
+        if estacion in ["Verano"] and destino in ["Bariloche"]:
+            alert("Ejercicio N°9",f"El precio final es: {estadia - (estadia*20/100)}")
+        elif estacion in ["Verano"] and destino in ["Cataratas","Cordoba"]:
+            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia + (estadia*10/100)}")
+        elif estacion in ["Verano"] and destino in ["Mar del plata"]:
+            alert("Ejercicio N°9",f"El precio final por estadia es: {estadia + (estadia*20/100)}")
+        
+        # PRIMAVERA - OTOÑO  
+        if estacion in ["Primevera","Otoño"] and destino in ["Bariloche","Cataratas","Mar del plata"]:
+            alert("Ejercicio N°9",f"El precio final es: {estadia + (estadia*10/100)}")
+        else:
+            estacion in ["Primera","Otoño"] and destino in ["Cordoba"]
+            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia}")
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
