@@ -30,7 +30,9 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        hora = int(self.txt_hora.get())
+        if hora >= 7 and hora <= 11:
+            alert(title="Ejercicio N°5",message="Es de mañana")
     
     
 if __name__ == "__main__":
