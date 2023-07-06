@@ -36,7 +36,14 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        mes = self.combobox_mes.get()
+        if mes in ["Enero","Febrero","Marzo","Abril","Mayo","Junio"]:
+            alert(title="Ejercicio N°2",message="Falta para el invierno aun")
+        elif mes in ["Julio","Agosto"]:
+            alert(title="Ejercicio N°2", message="Abrigate que hace frio!")
+        else:
+            mes in ["Septiembre","Octubre","Noviembre","Diciembre"]
+            alert(title="Ejercicio N°2",message="Ya pasamos frio, ahora calor!")
     
     
 if __name__ == "__main__":
