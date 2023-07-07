@@ -40,9 +40,36 @@ class App(customtkinter.CTk):
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
-    
+ #   Una agencia de viajes nos pide informar si hacemos viajes a lugares según la estación del año. 
+#En caso de hacerlo mostrar un alert con el mensaje “Se viaja”, 
+#caso contrario mostrar “No se viaja”. 
+ #   Si es invierno: solo se viaja a Bariloche
+  #  Si es verano: se viaja a Mar del plata y Cataratas
+   # Si es otoño: se viaja a todos los lugares
+    #Si es primavera: se viaja a todos los lugares menos Bariloche
     def btn_informar_on_click(self):
-        pass
+        destino = self.combobox_destino.get()
+        estacion = self.combobox_estaciones.get() 
+        #Invierno solo a bariloche:
+        if destino not in ["Bariloche"] and estacion in ["Invierno"]:
+            alert(title="Ejercicio 10",message="No se viaja")
+        elif destino in ["Bariloche"] and estacion in ["Invierno"]:
+            alert(title="Ejercicio N°10",message="Se viaja")
+        #Verano solo mardel y cataratas
+        elif destino in ["Mar del plata","Cataratas"] and estacion in ["Verano"]:
+            alert(title="Ejercicio N°10",message="Se viaja")
+        elif destino in ["Bariloche"] and estacion in ["Verano"]:
+            alert(title="Ejercicio N°10",message="No se viaja")
+        #Otoño se viaja a todos lados
+        elif destino in ["Otoño"]:
+            alert(title="Ejercicio N°10",message="Se viaja")
+        # Primavera todos lados menos Bariloche
+        elif destino not in ["Bariloche"] and estacion in ["Primavera"]:
+            alert(title="Ejercicio N°10",message="Se viaja")
+        else:
+            destino in ["Bariloche"] and estacion in ["Primavera"]
+            alert(title="Ejercicio N°10",message="No se viaja")
+        
             
     
 if __name__ == "__main__":
