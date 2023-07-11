@@ -38,9 +38,42 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
-        
-    
+        marca = self.combobox_marca.get()
+        cantidad = int(self.combobox_cantidad.get())
+        precio = 800
+        # A)
+        if cantidad >=6:
+            precio = (precio * 0.50) * cantidad
+        # B)
+        elif cantidad == 5:
+            precio = precio * cantidad
+            if marca == "ArgentinaLuz":
+                precio = (precio * 0.6) 
+            else:
+                precio = (precio *0.7) 
+        # C)
+        elif cantidad == 4:
+            precio = precio * cantidad
+            if marca in ["ArgentinaLuz","FelipeLamparas"]:
+                precio = (precio * 0.75)
+            else:
+                precio = (precio * 0.8)  
+        # D)        
+        elif cantidad ==3:
+            precio = precio * cantidad
+            if marca == "ArgentinaLuz":
+                precio = (precio * 0.85)
+            elif marca == "FelipeLamparas":
+                precio = (precio * 0.9)
+            else:
+                precio = (precio * 0.95)
+        # E)
+        if precio > 4000:
+            precio = (precio * 0.95)
+
+        mensaje = f'El total seria : {precio}'
+        alert(title="UTN FRA",message=f'{mensaje}')
+           
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
