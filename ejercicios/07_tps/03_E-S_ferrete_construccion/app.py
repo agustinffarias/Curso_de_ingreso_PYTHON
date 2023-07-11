@@ -63,8 +63,11 @@ class App(customtkinter.CTk):
         self.btn_calcular.grid(row=3, pady=10, columnspan=2, sticky="nsew")
 
     def btn_calcular_on_click(self):
-        pass
-
+        ancho = float(self.txt_ancho.get())
+        largo = float(self.txt_largo.get())
+        perimetro  = largo * 2 + ancho * 2
+        area = largo * ancho
+        alert(title="UTN FRA",message=f'El area es {area}mts² y el perimetro es {perimetro}mts')
 
 if __name__ == "__main__":
     app = App()
