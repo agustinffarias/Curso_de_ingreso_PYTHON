@@ -70,7 +70,6 @@ class App(customtkinter.CTk):
         # E)
         if precio > 4000:
             precio = (precio * 0.95)
-
         mensaje = f'El total seria : {precio}'
         alert(title="UTN FRA",message=f'{mensaje}')
            

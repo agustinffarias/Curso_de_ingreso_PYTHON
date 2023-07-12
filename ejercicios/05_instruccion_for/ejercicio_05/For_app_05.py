@@ -22,7 +22,13 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        
+        for _ in range(100):  # Asumiendo que el usuario responderá en un máximo de 100 iteraciones
+            respuesta = question("UTN FRA","¿Desea continuar?")
+            if not respuesta:
+                break
+
+                
         
     
 if __name__ == "__main__":

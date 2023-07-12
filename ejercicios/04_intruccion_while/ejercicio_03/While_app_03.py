@@ -32,7 +32,7 @@ class App(customtkinter.CTk):
                 break
             else:
                 alert(title="UTN FRA",message="Contraseña incorrecta, desea intentar nuevamente?")
-                prompt(title="UTN FRA",prompt="Ingresa tu clave: ")
+                clave = prompt(title="UTN FRA", prompt= "Ingresa tu clave: ")
                 if clave == "utn750":
                    alert(title="UTN FRA",message="Contraseña correcta")
                    break

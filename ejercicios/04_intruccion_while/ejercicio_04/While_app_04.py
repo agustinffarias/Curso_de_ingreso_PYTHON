@@ -20,12 +20,23 @@ class App(customtkinter.CTk):
 
         self.title("UTN FRA")
         
-        self.btn_validar_numero = customtkinter.CTkButton(master=self, text="Ingresar", command=self.btn_validar_numero_on_click)
+        self.btn_validar_numero = customtkinter.CTkButton(master=self, text="Validar numero", command=self.btn_validar_numero_on_click)
         self.btn_validar_numero.grid(row=2, pady=20, columnspan=2, sticky="nsew")
         
     
     def btn_validar_numero_on_click(self):
-        pass
+        numero = int(prompt(title="UTN FRA",prompt="Ingrese un numero: "))
+        
+        while True:
+            if numero <=9 and numero >=0:
+                alert("UTN FRA","El numero es correcto")
+                break
+            else:
+                alert("UTN FRA","El numero ingresado es incorrecto, intente nuevamente.")
+                numero= int(prompt(title="UTN FRA",prompt="Ingrese un numero: "))
+                if numero <= 9 and numero >= 0 :
+                   alert("UTN FRA","El numero es correcto")
+                   break
     
 if __name__ == "__main__":
     app = App()

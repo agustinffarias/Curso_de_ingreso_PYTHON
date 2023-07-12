@@ -6,7 +6,7 @@ import customtkinter
 
 '''
 Enunciado:
-Al presionar el botón Mostrar tomar del campo de texto cantidad de veces que se desea
+Al presionar el botón Mostrar tomar del campo de texto cantidad de repetir que se desea
 repetir el mensaje "Hola UTN FRA" (utilizando el Dialog Alert)
 '''
 
@@ -18,7 +18,7 @@ class App(customtkinter.CTk):
         # configure window
         self.title("UTN Fra")
 
-        self.label1 = customtkinter.CTkLabel(master=self, text="Edad")
+        self.label1 = customtkinter.CTkLabel(master=self, text="MENSAJE")
         self.label1.grid(row=0, column=0, padx=20, pady=10)
         
         self.txt_repetir = customtkinter.CTkEntry(master=self)
@@ -29,11 +29,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        repetir = self.txt_repetir.get()  
+        if repetir.isdigit():  
+            repetir = int(repetir)
+            for i in range(repetir):
+                alert("UTN FRA", "Hola UTN FRA")
+        else:
+            alert("Error", "El numero ingresado es incorrecto, intente nuevamente")
 
-        
-        
-    
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

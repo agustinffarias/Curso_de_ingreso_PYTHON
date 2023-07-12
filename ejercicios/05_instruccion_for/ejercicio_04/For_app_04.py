@@ -21,9 +21,14 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
-        
-    
+        for i in range(999):
+            numero = int(prompt("UTN FRA","Ingrese el numero 9: "))
+            if numero == 9:
+                break
+            else:
+                alert("UTN FRA","El numero ingresado es incorrecto, intente nuevamente.")
+            
+                
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
