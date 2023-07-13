@@ -30,15 +30,16 @@ class App(customtkinter.CTk):
     
     def btn_informar_on_click(self):
         destino = self.combobox_destino.get()
-        
-        if destino in ["Bariloche"]:
-            alert("Ejercicio N°7","Bariloche se encuentra en el Oeste")
-        elif destino in ["Mar del plata"]:
-            alert("Ejercicio N°7","Mar del Plata se encuentra en el Este")
-        elif destino in ["Cataratas"]:
-            alert("Ejercicio N°7","Las Cataratas se encuentran en el Norte")
-        elif destino in ["Ushuaia"]:
-            alert("Ejercicio N°7","Ushuaia se encuentra en el Sur")
+        match destino:
+            case "Bariloche":
+                mensaje= "Bariloche se encuentra en el Oeste"
+            case"Mar del plata":
+                mensaje= "Mar del Plata se encuentra en el Este"
+            case"Cataratas":
+                mensaje= "Las Cataratas se encuentran en el Norte"
+            case"Ushuaia":
+                mensaje= "Ushuaia se encuentra en el Sur"
+        alert(title="UTN FRA",message=mensaje)
         
     
     

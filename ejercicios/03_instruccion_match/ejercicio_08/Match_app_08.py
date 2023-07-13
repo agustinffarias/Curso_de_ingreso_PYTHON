@@ -30,13 +30,14 @@ class App(customtkinter.CTk):
     
     def btn_informar_on_click(self):
         destino = self.combobox_destino.get()
+        match destino:
+            case "Mar del plata"|"Cataratas":
+                mensaje= "En este destino la mayor parte del año hace CALOR"
+            case "Bariloche"|"Ushuaia":
+                mensaje = "En este destino la mayor parte del año hace FRIO"
         
-        if destino in ["Mar del plata","Cataratas"]:
-            alert("Ejercicio N°8","En este destino la mayor parte del año hace CALOR")
-        else:
-            destino in ["Bariloche","Ushuaia"]
-            alert("Ejercicio N°8","En este destino la mayor parte del año hace FRIO")
-        
+        alert("UTN FRA",message=mensaje)
+            
     
     
 if __name__ == "__main__":

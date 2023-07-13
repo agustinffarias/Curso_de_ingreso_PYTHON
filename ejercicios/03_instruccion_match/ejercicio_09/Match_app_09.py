@@ -45,39 +45,61 @@ class App(customtkinter.CTk):
         destinos = ['Bariloche', 'Mar del plata', 'Cataratas', 'Cordoba']
         self.combobox_destino = customtkinter.CTkComboBox(master=self, values=destinos)
         self.combobox_destino.grid(row=3, column=0, padx=20, pady=(10, 10))
-
-        
+    
         self.btn_informar = customtkinter.CTkButton(master=self, text="Informar", command=self.btn_informar_on_click)
         self.btn_informar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
         
-
     def btn_informar_on_click(self):
-        destino = self.combobox_destino.get()
         estacion = self.combobox_estaciones.get()
+        destino = self.combobox_destino.get()
         estadia = 15000
-        # INVIERNO:
-        if estacion in ["Invierno"] and destino in ["Bariloche"]:
-            alert("Ejercicio N°9",f"El precio final es: {estadia + (estadia*20/100)}")
-        elif estacion in ["Invierno"] and destino in ["Cataratas","Cordoba"]:
-            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia - (estadia*10/100)}")
-        elif estacion in ["Invierno"] and destino in ["Mar del plata"]:
-            alert("Ejercicio N°9",f"El precio final por estadia es: {estadia - (estadia*20/100)}")
-            
-        #VERANO:
-        if estacion in ["Verano"] and destino in ["Bariloche"]:
-            alert("Ejercicio N°9",f"El precio final es: {estadia - (estadia*20/100)}")
-        elif estacion in ["Verano"] and destino in ["Cataratas","Cordoba"]:
-            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia + (estadia*10/100)}")
-        elif estacion in ["Verano"] and destino in ["Mar del plata"]:
-            alert("Ejercicio N°9",f"El precio final por estadia es: {estadia + (estadia*20/100)}")
+# Logica utilizable en diferentes lenguajes de programacion:
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        mensaje = estadia * 1.2
+                    case "Cataratas"|"Cordoba":
+                        mensaje = estadia * 1.1
+                    case _:
+                        mensaje = estadia * .80
+            case "Verano":
+                match destino:
+                    case "Bariloche":
+                        mensaje = estadia * 0.8
+                    case "Cordoba"|"Cataratas":
+                        mensaje = estadia * 1.1
+                    case "Mar del plata":
+                        mensaje = estadia * 1.2
+            case "Otoño"|"Primevera":
+                match destino:
+                    case "Bariloche"|"Cataratas"|"Mar del plata":
+                        mensaje = estadia * 1.1
+                    case "Cordoba":
+                        mensaje = estadia                
+        alert(title="UTN FRA",message=mensaje)
         
-        # PRIMAVERA - OTOÑO  
-        if estacion in ["Primevera","Otoño"] and destino in ["Bariloche","Cataratas","Mar del plata"]:
-            alert("Ejercicio N°9",f"El precio final es: {estadia + (estadia*10/100)}")
-        else:
-            estacion in ["Primera","Otoño"] and destino in ["Cordoba"]
-            alert("Ejercicio N°9",f"El precio final de la estadia es: {estadia}")
-
+'''  No sirve para otros lenguajes, si para Python.
+        match(estacion, destino):
+            case ('Invierno', 'Bariloche'):
+                 mensaje = estadia * 1.2
+            case ('Invierno', 'Cataratas' | 'Córdoba'):
+                mensaje = estadia * 0.9
+            case ('Invierno', 'Mar del plata'):
+                mensaje = estadia * 0.8
+            case ('Verano', 'Bariloche'):
+                mensaje = estadia * 0.8
+            case ('Verano', 'Cataratas' | 'Córdoba'):
+                mensaje = estadia * 1.1
+            case ('Verano', 'Mar del plata'):
+                mensaje = estadia * 1.2
+            case ('Primavera' | 'Otoño', 'Bariloche' | 'Cataratas' | 'Mar del plata'):
+                mensaje = estadia * 1.1
+            case ('Primavera' | 'Otoño', 'Córdoba'):
+                mensaje = estadia
+                    
+        alert(title="UTN FRA",message=f'El precio final es: {mensaje}')   
+'''
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

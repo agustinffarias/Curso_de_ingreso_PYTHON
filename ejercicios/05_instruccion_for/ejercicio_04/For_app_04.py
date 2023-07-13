@@ -28,7 +28,6 @@ class App(customtkinter.CTk):
             else:
                 alert("UTN FRA","El numero ingresado es incorrecto, intente nuevamente.")
             
-                
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

@@ -12,7 +12,6 @@ mostrar mediante alert el mensaje ‘Es de mañana’
 si la hora ingresada está entre las 7 y las 11
 '''
 
-
 class App(customtkinter.CTk):
     
     def __init__(self):
@@ -31,10 +30,15 @@ class App(customtkinter.CTk):
     
     def btn_informar_on_click(self):
         hora = int(self.txt_hora.get())
-        if hora >= 7 and hora <= 11:
-            alert(title="Ejercicio N°5",message="Es de mañana")
-    
-    
+        match hora:
+            case 7|8|9|10|11:
+                mensaje = "Es de mañana"
+            case _:
+                mensaje = None
+                
+        if mensaje != None:
+           alert(title="UTN FRA",message=mensaje)
+            
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
