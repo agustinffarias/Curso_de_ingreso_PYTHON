@@ -50,28 +50,34 @@ class App(customtkinter.CTk):
     def btn_informar_on_click(self):
         destino = self.combobox_destino.get()
         estacion = self.combobox_estaciones.get() 
-        #Invierno solo a bariloche:
-        if destino not in ["Bariloche"] and estacion in ["Invierno"]:
-            alert(title="Ejercicio 10",message="No se viaja")
-        elif destino in ["Bariloche"] and estacion in ["Invierno"]:
-            alert(title="Ejercicio N°10",message="Se viaja")
-        #Verano solo mardel y cataratas
-        elif destino in ["Mar del plata","Cataratas"] and estacion in ["Verano"]:
-            alert(title="Ejercicio N°10",message="Se viaja")
-        elif destino in ["Bariloche"] and estacion in ["Verano"]:
-            alert(title="Ejercicio N°10",message="No se viaja")
-        #Otoño se viaja a todos lados
-        elif destino in ["Otoño"]:
-            alert(title="Ejercicio N°10",message="Se viaja")
-        # Primavera todos lados menos Bariloche
-        elif destino not in ["Bariloche"] and estacion in ["Primavera"]:
-            alert(title="Ejercicio N°10",message="Se viaja")
-        else:
-            destino in ["Bariloche"] and estacion in ["Primavera"]
-            alert(title="Ejercicio N°10",message="No se viaja")
         
-            
-    
+        match estacion:
+            case "Invierno":
+                match destino:
+                    case "Bariloche":
+                        mensaje = "Se viaja"
+                    case _:
+                        mensaje = "No se viaja"
+            case "Verano":
+                match destino:
+                    case "Mar del plata" | "Cataratas":
+                        mensaje = "Se viaja"
+                    case _:
+                        mensaje = "No se viaja"
+            case "Otoño":
+                match destino:
+                    case "Cataratas"|"Mar del plata"|"Bariloche"|"Cordoba":
+                        mensaje = "Se viaja"
+            case "Primavera":
+                match destino:
+                    case "Bariloche":
+                        mensaje = "No se viaja"
+                    case _:
+                        mensaje = "Se viaja"
+        alert("UTN FRA",mensaje)
+
+       
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
