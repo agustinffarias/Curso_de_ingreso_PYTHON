@@ -32,9 +32,27 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
-
-    
+        contador = 0 
+        numeros_acumulados = 0
+        resultado_prompt = "si"
+        negativos = 1
+        
+        while True: 
+            numero =int(prompt("UTN FRA","Ingrese un numero: "))
+            if numero == None or numero == 0:
+                break
+            numero = int(numero)
+            if numero > 0:
+                numeros_acumulados = numeros_acumulados + numero
+            elif numero <0:
+                negativos = negativos * numero
+  
+        # Ingresamos los datos a las cajitas:
+        self.txt_suma_acumulada.delete(0,10000)
+        self.txt_suma_acumulada.insert(0,numeros_acumulados)      
+        self.txt_producto.delete(0,10000)
+        self.txt_producto.insert(0,negativos)
+            
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

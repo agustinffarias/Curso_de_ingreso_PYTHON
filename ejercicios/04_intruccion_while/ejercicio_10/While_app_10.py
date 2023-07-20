@@ -33,9 +33,35 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
-
-    
+        contador_numeros_positivos = 0
+        contador_numeros_negativos = 0
+        suma_numeros_positivos = 0
+        suma_numeros_negativos = 0
+        ceros = 0
+      
+        while True:
+            numero = prompt("UTN FRA","Ingrese un numero: ")
+            if numero == None:
+                break
+            numero = int(numero)
+            if numero > 0:
+                suma_numeros_positivos = suma_numeros_positivos + numero
+                contador_numeros_positivos = contador_numeros_positivos + 1
+            elif numero < 0:
+                suma_numeros_negativos = suma_numeros_negativos - numero
+                contador_numeros_negativos = contador_numeros_negativos + 1
+            elif numero == 0:
+                ceros = ceros + 1
+        diferencia = suma_numeros_positivos - suma_numeros_negativos
+        alert("UTN FRA",f'La suma de positivos es: {suma_numeros_positivos}\nLa suma de negativos es: {suma_numeros_negativos}\nLa cantidad de ceros es: {ceros}\nLa diferencia entre positivos y negativos es: {diferencia}')
+        
+           
+            
+          
+      
+            
+            
+        
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

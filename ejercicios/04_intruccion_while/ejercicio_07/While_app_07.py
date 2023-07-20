@@ -30,9 +30,27 @@ class App(customtkinter.CTk):
         self.btn_mostrar = customtkinter.CTkButton(master=self, text="Comenzar Ingreso", command=self.btn_comenzar_ingreso_on_click)
         self.btn_mostrar.grid(row=2, padx=20, pady=20, columnspan=2, sticky="nsew")
 
-
+#while  numero == None or numero.isdigit() == False or int(numero) < 0 or int(numero) > 9:
+            #numero = prompt(title="UTN",prompt="ingrese un numero del 0 al 9")
+            
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        contador = 0
+        resultado_prompt = "si"
+        numeros_acumulados = 0
+        #Cuando sea diferente de cancelar: 
+        while resultado_prompt != None:
+            numero = int(prompt("UTN FRA",prompt="Ingrese un numero:"))
+            numeros_acumulados = numeros_acumulados + numero # Esto es un acumulador
+            contador = contador +1 #Esto es el contador de vueltas
+            resultado_prompt = prompt("UTN FRA",prompt="Desea continuar? ")
+        promedio = numeros_acumulados / contador
+        # Ingresamos los datos a las cajitas:
+        self.txt_suma_acumulada.delete(0,10000)
+        self.txt_suma_acumulada.insert(0,numeros_acumulados)      
+        self.txt_promedio.delete(0,10000)
+        self.txt_promedio.insert(0,promedio)
+           
+            
 
     
 if __name__ == "__main__":

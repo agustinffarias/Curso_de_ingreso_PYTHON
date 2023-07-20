@@ -50,7 +50,28 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        pass
+            
+        apellido = prompt("UTN FRA","Ingrese su apellido: ")
+        while apellido == None or apellido == "" or apellido.isdigit():
+                apellido = prompt("UTN FRA","El apellido es incorrecto,ingrese su apellido nuevamente: ")     
+        edad = int(prompt("UTN FRA","Ingrese su edad: "))
+        while edad < 18 or edad > 90:
+                edad = int(prompt("UTN FRA","La edad ingresada es incorrecta! (18-90), ingrese nuevamente la edad: "))
+        legajo = int(prompt("UTN FRA","Ingrese su N° de Legajo(Sin ceros al comienzo): "))
+        while legajo >10000:
+            legajo = int(prompt("UTN FRA","Su legajo es incorrecto, ingrese su N° de Legajo(Sin ceros al comienzo): "))
+        #estado_civil = self.combobox_tipo.set()
+        #while estado_civil != "Soltero/a"or estado_civil != "Casado/a"or estado_civil != "Divorciado/a"or estado_civil != "Viudo/a":
+        #    estado_civil = prompt("ERROR","El estado civil seleccionado es incorrecto, intente nuevamente: ")
+        
+            
+        #INSERTS:
+        self.txt_apellido.insert(0,apellido)
+        self.txt_edad.insert(0,edad)
+        self.txt_legajo.insert(0,legajo)
+        
+            
+            
 
 
 if __name__ == "__main__":

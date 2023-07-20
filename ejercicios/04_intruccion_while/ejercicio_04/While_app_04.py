@@ -27,17 +27,9 @@ class App(customtkinter.CTk):
     def btn_validar_numero_on_click(self):
         numero = int(prompt(title="UTN FRA",prompt="Ingrese un numero: "))
         
-        while True:
-            if numero <=9 and numero >=0:
-                alert("UTN FRA","El numero es correcto")
-                break
-            else:
-                alert("UTN FRA","El numero ingresado es incorrecto, intente nuevamente.")
-                numero= int(prompt(title="UTN FRA",prompt="Ingrese un numero: "))
-                if numero <= 9 and numero >= 0 :
-                   alert("UTN FRA","El numero es correcto")
-                   break
-    
+        while numero < 1 or numero>9:
+            numero = int(prompt(title="UTN FRA",prompt="Numero ingresado incorrecto, intente nuevamente: "))
+            
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
