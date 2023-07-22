@@ -54,14 +54,7 @@ class App(customtkinter.CTk):
                 ceros = ceros + 1
         diferencia = suma_numeros_positivos - suma_numeros_negativos
         alert("UTN FRA",f'La suma de positivos es: {suma_numeros_positivos}\nLa suma de negativos es: {suma_numeros_negativos}\nLa cantidad de ceros es: {ceros}\nLa diferencia entre positivos y negativos es: {diferencia}')
-        
-           
-            
-          
-      
-            
-            
-        
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

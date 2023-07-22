@@ -59,21 +59,16 @@ class App(customtkinter.CTk):
                 edad = int(prompt("UTN FRA","La edad ingresada es incorrecta! (18-90), ingrese nuevamente la edad: "))
         legajo = int(prompt("UTN FRA","Ingrese su N° de Legajo(Sin ceros al comienzo): "))
         while legajo >10000:
-            legajo = int(prompt("UTN FRA","Su legajo es incorrecto, ingrese su N° de Legajo(Sin ceros al comienzo): "))
-        #estado_civil = self.combobox_tipo.set()
-        #while estado_civil != "Soltero/a"or estado_civil != "Casado/a"or estado_civil != "Divorciado/a"or estado_civil != "Viudo/a":
-        #    estado_civil = prompt("ERROR","El estado civil seleccionado es incorrecto, intente nuevamente: ")
-        
+            if legajo.starwith(0):
+               legajo = int(prompt("UTN FRA","Su legajo es incorrecto, ingrese su N° de Legajo(Sin ceros al comienzo): "))
+        estado_civil = prompt("UTN FRA","Ingrese su estado civil(Soltero/a,Casado/a,Viudo/a,Divorciado/a):")
             
         #INSERTS:
         self.txt_apellido.insert(0,apellido)
         self.txt_edad.insert(0,edad)
         self.txt_legajo.insert(0,legajo)
+        self.combobox_tipo.set(estado_civil)
         
-            
-            
-
-
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")

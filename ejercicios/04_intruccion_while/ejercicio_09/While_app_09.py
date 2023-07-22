@@ -42,6 +42,9 @@ class App(customtkinter.CTk):
         while resultado_prompt != None:
             numero = prompt("UTN FRA","Ingrese un numero: ")
             numero = int(numero)
+            if numero is None or numero == 0:
+                break
+            numero = int(numero)
             if bandera_primero == True:
                 maximo = numero
                 minimo = numero
@@ -50,8 +53,7 @@ class App(customtkinter.CTk):
                 if numero < minimo:
                     minimo = numero
                 if numero > maximo:
-                    maximo = numero
-                    
+                    maximo = numero      
             resultado_prompt = prompt("UTN FRA","Desea seguir?")
         alert("UTN FRA",f"El maximo es {maximo}, y el minimo es {minimo}")
 

@@ -24,7 +24,7 @@ class App(customtkinter.CTk):
 
     def btn_mostrar_on_click(self):
         for i in range(1,5):
-            alert(title="UTN FRA",message=f'{i}')
+            alert("UTN FRA",i)
        
 if __name__ == "__main__":
     app = App()
